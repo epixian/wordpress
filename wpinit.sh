@@ -72,7 +72,7 @@ chmod 660 .htaccess
 cp wp-config-sample.php wp-config.php
 sudo mv * /var/www/html
 cd /var/www/html
-sudo chown -R www-data:www-data *
+sudo chown -R ubuntu:www-data /var/www/html
 find . -type d -exec chmod 754 {} \;
 find . -type f -exec chmod 640 {} \;
 
@@ -99,7 +99,12 @@ echo "define('FS_METHOD', 'direct');" >> wp-config.php
 echo "Setting up RDS..."
 mysql -u $RDS_USER -p -h $DB_HOST -e "create database if not exists $DB_NAME; create user if not exists '$DB_USER'@'%' identified by '$DB_PASS'; grant SELECT,ALTER,UPDATE,INSERT,CREATE,DELETE,DROP,INDEX,REFERENCES on $DB_NAME.* to '$DB_USER'@'%'; flush privileges;"
 
+echo "Restarting Apache2 web server..."
 sudo systemctl restart apache2
+
+echo "Cleaning up temporary files..."
+rm -rf ~/wordpress
+rm -f latest.tar.gz
 
 echo "Wordpress configuration complete."
 echo "Visit https://$DOMAIN/wp-admin to complete the installation."
