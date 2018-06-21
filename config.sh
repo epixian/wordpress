@@ -24,3 +24,6 @@ read DB_USER
 echo -n "Database password: "
 read DB_PASS
 
+# update hostname
+echo "$DOMAIN" > /etc/hostname
+sed -i "s/(127.0.0.1\s)(\w+)/\1$DOMAIN \2/" /etc/hosts
