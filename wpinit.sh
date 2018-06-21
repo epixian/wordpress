@@ -75,6 +75,8 @@ cd /var/www/html
 sudo chown -R ubuntu:www-data /var/www/html
 find . -type d -exec chmod 754 {} \;
 find . -type f -exec chmod 640 {} \;
+mkdir wp-content/upgrade
+chown -R www-data:www-data wp-content
 
 # begin wp configuration
 echo "Configuring Wordpress..."
