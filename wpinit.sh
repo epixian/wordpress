@@ -101,7 +101,7 @@ mysql -u $RDS_USER -p -h $DB_HOST -e "create database if not exists $DB_NAME; cr
 sudo systemctl restart apache2
 
 echo "Wordpress configuration complete."
-echo "Visit $DOMAIN/wp-admin to complete the installation."
+echo "Visit https://$DOMAIN/wp-admin to complete the installation."
 cd $PWD
 
 
