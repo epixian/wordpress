@@ -52,7 +52,8 @@ ServerName $DOMAIN
 </Directory>
 EOF
 
-
+# give index.php higher precedence
+sed -E 's/(DirectoryIndex\s)(.+)(index.php\s)(.+)/\1\3\2\4/' /etc/apache2/mods-enabled/dir.conf
 
 # install wordpress
 echo "Downloading wordpress..."
