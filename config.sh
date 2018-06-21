@@ -15,7 +15,7 @@ REGION=$(ec2metadata | grep -oP "(?<=availability-zone:\s)([a-z0-9-]*)(?=\w)")
 
 # database settings
 RDS_USER=epixian
-DB_HOST=epixian-wordpress-mariadb.cdzz9aj3vfhz.us-east-1.rds.amazonaws.com
+DB_HOST=epixian-mariadb-wordpress.cdzz9aj3vfhz.us-east-1.rds.amazonaws.com
 
 echo -n "Database name: "
 read DB_NAME
